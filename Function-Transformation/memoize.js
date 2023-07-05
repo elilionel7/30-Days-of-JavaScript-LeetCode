@@ -11,13 +11,13 @@
  * @param {Function} fn
  */
 function memoize(fn) {
-    let cache = {};
+    let cache = {}; // get a dictionary to cache keys whose values have been calculated
     return function(...args) {
-        const key = String(args);
-        if (key in cache){
+        const key = String(args);// puts args as keys
+        if (key in cache){ // return val of key if key in cache
             return cache[key]
         }
-        const val = fn(...args)
+        const val = fn(...args)// if key not in cache cal calculate value of key and store it for future access
         cache[key] = val;
         return val;
     }
